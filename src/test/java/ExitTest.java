@@ -12,7 +12,7 @@ public class ExitTest extends FixedData {
     public void Test1() throws InterruptedException {
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+
         driver.findElement(By.xpath("//*[text()='Вход']")).click();
         driver.findElement(By.xpath("//*[@id=\"login_name\"]")).sendKeys(CORRECT_LOGIN);
         driver.findElement(By.xpath("//*[@name='login_password']")).sendKeys(CORRECT_PASSWORD);
@@ -27,7 +27,7 @@ public class ExitTest extends FixedData {
     @Test
     public void Test2() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+
         driver.findElement(By.xpath("//*[text()='Вход']")).click();
         driver.findElement(By.xpath("//*[@id=\"login_name\"]")).sendKeys(CORRECT_LOGIN);
         driver.findElement(By.xpath("//*[@name='login_password']")).sendKeys(CORRECT_PASSWORD);
