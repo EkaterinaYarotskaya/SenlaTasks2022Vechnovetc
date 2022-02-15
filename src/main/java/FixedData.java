@@ -4,12 +4,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 public class FixedData {
-   private    String pageURL = "https://kinogoo.by/#";
-   WebDriver driver;
+   protected static    String pageURL = "https://kinogoo.by/#";
+    protected static  WebDriver driver;
     @BeforeAll
-    public   void beforeAllTests() {
+    public static   void beforeAllTests() {
         System.setProperty("webdriver.chrome.driver",
-                "E:\\myProject\\chromedriver_win32\\chromedriver.exe");         }
+                "chromedriver_win32\\chromedriver.exe");         }
     @BeforeEach
     public   void beforeEach() {
         driver=new ChromeDriver();
