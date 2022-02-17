@@ -4,10 +4,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 public class FixedData {
-   protected static    String pageURL = "https://kinogoo.by/#";
+   protected static    String pageURL = "http://the-internet.herokuapp.com/login";
     protected static  WebDriver driver;
     @BeforeAll
     public static   void beforeAllTests() {
+
         System.setProperty("webdriver.chrome.driver",
                 "chromedriver_win32\\chromedriver.exe");         }
     @BeforeEach

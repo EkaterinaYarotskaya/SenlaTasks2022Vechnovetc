@@ -6,37 +6,21 @@ import org.openqa.selenium.By;
 import java.time.Duration;
 
 public class ExitTest extends FixedData {
-    String CORRECT_LOGIN = "login";
-    String CORRECT_PASSWORD = "password";
+    String CORRECT_LOGIN = "tomsmith";
+    String CORRECT_PASSWORD = "SuperSecretPassword!";
+
     @Test
     public void Test1() throws InterruptedException {
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        driver.findElement(By.xpath("//*[text()='Вход']")).click();
-        driver.findElement(By.xpath("//*[@id=\"login_name\"]")).sendKeys(CORRECT_LOGIN);
-        driver.findElement(By.xpath("//*[@name='login_password']")).sendKeys(CORRECT_PASSWORD);
-        driver.findElement(By.xpath("//*[text()=\"Войти\"]")).click();
-        driver.findElement(By.xpath("//*[@class='thide lexit']")).click();
-        String actual = driver.findElement(By.xpath("//*[@onclick=\"change('test')\"]")).getText();
-        String expected = "Вход";
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        driver.findElement(By.xpath("//input[@type='text']")).sendKeys(CORRECT_LOGIN);
+        driver.findElement(By.xpath("//input[@type='password']")).sendKeys(CORRECT_PASSWORD);
+        driver.findElement(By.xpath("//button/i[@class='fa fa-2x fa-sign-in']")).click();
+        driver.findElement(By.xpath("//*[@class='icon-2x icon-signout']")).click();
+        String actual = driver.findElement(By.xpath("//*[text()='Login Page']")).getText();
+        System.out.println(actual);
+        String expected = "Login Page";
         Thread.sleep(5000);
         Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void Test2() throws InterruptedException {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        driver.findElement(By.xpath("//*[text()='Вход']")).click();
-        driver.findElement(By.xpath("//*[@id=\"login_name\"]")).sendKeys(CORRECT_LOGIN);
-        driver.findElement(By.xpath("//*[@name='login_password']")).sendKeys(CORRECT_PASSWORD);
-        driver.findElement(By.xpath("//*[text()=\"Войти\"]")).click();
-        driver.findElement(By.xpath("//*[@class='thide lexit']")).click();
-        String actual = driver.findElement(By.xpath("//*[@onclick=\"change('test')\"]")).getText();
-        String expected = "Выход";
-        Thread.sleep(5000);
-        Assertions.assertNotEquals(expected, actual);
-
     }
 }
