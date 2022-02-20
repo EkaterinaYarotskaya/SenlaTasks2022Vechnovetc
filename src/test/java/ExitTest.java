@@ -17,7 +17,8 @@ public class ExitTest extends FixedData {
         driver.findElement(By.xpath("//input[@type='password']")).sendKeys(CORRECT_PASSWORD);
         driver.findElement(By.xpath("//button/i[@class='fa fa-2x fa-sign-in']")).click();
         driver.findElement(By.xpath("//*[@class='icon-2x icon-signout']")).click();
-        String actual = driver.findElement(By.xpath("//*[text()='Login Page']")).getText();
+        String actual = driver.findElement(By.xpath("//*[text()='Login Page']")).getText(); //тут то же самое. Ты нашла элемент, который содержит текст
+        // и проверяешь, что он содержит текст.
         System.out.println(actual);
         String expected = "Login Page";
         Thread.sleep(5000);
