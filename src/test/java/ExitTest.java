@@ -10,18 +10,14 @@ public class ExitTest extends FixedData {
     String CORRECT_PASSWORD = "SuperSecretPassword!";
 
     @Test
-    public void Test1() throws InterruptedException {
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-        driver.findElement(By.xpath("//input[@type='text']")).sendKeys(CORRECT_LOGIN);
-        driver.findElement(By.xpath("//input[@type='password']")).sendKeys(CORRECT_PASSWORD);
-        driver.findElement(By.xpath("//button/i[@class='fa fa-2x fa-sign-in']")).click();
-        driver.findElement(By.xpath("//*[@class='icon-2x icon-signout']")).click();
-        String actual = driver.findElement(By.xpath("//*[text()='Login Page']")).getText(); //тут то же самое. Ты нашла элемент, который содержит текст
-        // и проверяешь, что он содержит текст.
+    public void logoutTest() {
+        driver.findElement(By.id("username")).sendKeys(CORRECT_LOGIN);
+        driver.findElement(By.id("password")).sendKeys(CORRECT_PASSWORD);
+        driver.findElement(By.tagName("button")).click();
+        driver.findElement(By.cssSelector("a.button.secondary")).click();
+        String actual = driver.findElement(By.cssSelector("#content > div > h2")).getText();
         System.out.println(actual);
         String expected = "Login Page";
-        Thread.sleep(5000);
         Assertions.assertEquals(expected, actual);
     }
 }
