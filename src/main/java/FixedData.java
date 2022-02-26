@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
 
 public class FixedData {
-    protected static String pageURL = "http://the-internet.herokuapp.com/login";
+
     protected static WebDriver driver;
 
 
@@ -24,8 +24,7 @@ public class FixedData {
     @BeforeEach
     public void beforeEach() {
         driver = new ChromeDriver();
-        driver.get(pageURL);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+
     }
 
     @AfterEach
