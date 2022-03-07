@@ -2,9 +2,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
-import java.time.Duration;
-
 public class LoginTest extends FixedData {
+    //также пароли и логины в проперти файл
+
+    //также когда приводишь в порядок код не забывай про сочетания клавиш
+    //Alt+Ctrl+O - удаляет неиспользуемые импорты (то, что вверху import)
+    //Alt+Ctrl+L - приводит код к нормальному виду, удаляет лишние пробелы и добавляет их где требуется
     String CORRECT_LOGIN = "tomsmith";
     String CORRECT_PASSWORD = "SuperSecretPassword!";
     String INCORRECT_LOGIN = "login1";
@@ -16,7 +19,7 @@ public class LoginTest extends FixedData {
     public void successfulLoginWithCorrectCredentials() {
         driver.findElement(userNameField).sendKeys(CORRECT_LOGIN);
         driver.findElement(userPasswordField).sendKeys(CORRECT_PASSWORD);
-        driver.findElement(By.tagName("button")).click();
+        driver.findElement(By.tagName("button")).click(); //в переменную
         String actual = driver.findElement(By.className("subheader")).getText();
         String expected = "Welcome to the Secure Area. When you are done click logout below.";
         Assertions.assertEquals(expected, actual);
@@ -26,8 +29,8 @@ public class LoginTest extends FixedData {
     public void unsuccessfulLoginWithIncorrectLoginAndCorrectPassword() {
         driver.findElement(userNameField).sendKeys(INCORRECT_LOGIN);
         driver.findElement(userPasswordField).sendKeys(CORRECT_PASSWORD);
-        driver.findElement(By.tagName("button")).click();
-        String actual = driver.findElement(By.id("flash")).getText();
+        driver.findElement(By.tagName("button")).click(); //в переменную
+        String actual = driver.findElement(By.id("flash")).getText(); //в переменную
         String expected = "Your username is invalid!\n" + "×";
         Assertions.assertEquals(expected, actual);
     }
@@ -36,8 +39,8 @@ public class LoginTest extends FixedData {
     public void unsuccessfulLoginWithCorrectLoginAndIncorrectPassword() {
         driver.findElement(userNameField).sendKeys(CORRECT_LOGIN);
         driver.findElement(userPasswordField).sendKeys(INCORRECT_PASSWORD);
-        driver.findElement(By.tagName("button")).click();
-        String actual = driver.findElement(By.id("flash")).getText(); //тут ты ищешь по xpath, хотя, по факту поиск идёт любого элемента с
+        driver.findElement(By.tagName("button")).click(); //в переменную
+        String actual = driver.findElement(By.id("flash")).getText();  //в переменную
         String expected = "Your password is invalid!\n" + "×";
         Assertions.assertEquals(expected, actual);
 
@@ -47,8 +50,8 @@ public class LoginTest extends FixedData {
     public void unsuccessfulLoginWithIncorrectLoginAndIncorrectPassword() {
         driver.findElement(userNameField).sendKeys(INCORRECT_LOGIN);
         driver.findElement(userPasswordField).sendKeys(INCORRECT_PASSWORD);
-        driver.findElement(By.tagName("button")).click();
-        String actual = driver.findElement(By.id("flash")).getText(); //тут ты ищешь по xpath, хотя, по факту поиск идёт любого элемента с
+        driver.findElement(By.tagName("button")).click(); //в переменную
+        String actual = driver.findElement(By.id("flash")).getText(); //в переменную
         String expected = "Your username is invalid!\n" + "×";
         Assertions.assertEquals(expected, actual);
     }
