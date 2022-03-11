@@ -20,6 +20,6 @@ public class ExitTest extends FixedData {
         frontPage = (FrontPage) loginPage.loginUserAccount(CORRECT_LOGIN, CORRECT_PASSWORD);
         loginPage = (LoginPage) frontPage.logoutUserAccount();
         //убрать метод, убрать локаторы из теста
-        loginPage.assertCheck("Login Page", By.cssSelector("#content > div > h2"));
+//        loginPage.assertCheck("Login Page", By.cssSelector("#content > div > h2"));
     }
 }
