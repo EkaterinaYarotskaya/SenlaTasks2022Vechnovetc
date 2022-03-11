@@ -46,6 +46,7 @@ public class FixedData {
     public void beforeEach() {
 
         driver = new ChromeDriver();
+
         driver.get(pageURL);
 
     }

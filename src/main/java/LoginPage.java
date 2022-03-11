@@ -27,14 +27,7 @@ public class LoginPage implements PageObject {
         } else {
             return new FrontPage(driver);
         }
-        String a = driver.findElement(By.className(""))
-//       String fd = driver.findElement(By.cssSelector(".(button secondary radius)")).getTagName();
-        String a1 = "href";
-        Assertions.assertEquals(a, a1);
-
-
     }
-
 
 //    default void assertCheck(String expected, By selector) {
 //        String actual = FixedData.driver.findElement(selector).getText();
