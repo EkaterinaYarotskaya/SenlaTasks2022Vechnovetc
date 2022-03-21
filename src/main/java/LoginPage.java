@@ -1,7 +1,5 @@
-import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import java.time.Duration;
 
@@ -14,7 +12,6 @@ public class LoginPage implements PageObject {
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
-
 
     public PageObject loginUserAccount(String userName, String userPassword) {
 
@@ -29,9 +26,14 @@ public class LoginPage implements PageObject {
         }
     }
 
-//    default void assertCheck(String expected, By selector) {
-//        String actual = FixedData.driver.findElement(selector).getText();
-//        Assertions.assertEquals(expected, actual);
+    public boolean isLoginButtonPresent() {
+        int size = driver.findElements(BUTTON_FIELD).size();
+        return size > 0;
+    }
+
 }
+
+
+
 
 
