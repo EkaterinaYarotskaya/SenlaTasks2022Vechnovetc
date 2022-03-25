@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class FrontPage implements PageObject {
+
     private final By BUTTON_LOGOUT = By.cssSelector("a.button.secondary");
     private WebDriver driver;
 

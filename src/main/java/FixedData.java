@@ -43,7 +43,7 @@ public class FixedData implements PageObject {
                 INCORRECT_PASSWORD = property.getProperty("INCORRECT_PASSWORD");
                 pageURL_DYNAMIC = property.getProperty("pageURL_DYNAMIC");
                 pageURL_DYNAMIC_CONTROL= property.getProperty("pageURL_DYNAMIC_CONTROL");
-                driver.get(pageURL_DYNAMIC_CONTROL);
+                driver.get(pageURL_DYNAMIC);
             } catch (IOException ex) {
                 ex.printStackTrace();
                 System.err.println("ОШИБКА: Файл свойств отсуствует!");
