@@ -12,13 +12,13 @@ public class FixedData implements PageObject {
 
     protected WebDriver driver;
     FileInputStream fis;
-    String pageURL;
-    String CORRECT_LOGIN;
-    String CORRECT_PASSWORD;
-    String INCORRECT_LOGIN;
-    String INCORRECT_PASSWORD;
-    String pageURL_DYNAMIC;
-    String pageURL_DYNAMIC_CONTROL;
+    String loginPageUrl;
+    String correctLogin;
+    String correctPassword;
+    String incorrectLogin;
+    String incorrectPassword;
+    String dynamicContentUrl;
+    String dynamicControlUrl;
 
     @BeforeAll
     public static void beforeAllTests() {
@@ -30,27 +30,28 @@ public class FixedData implements PageObject {
     public void beforeEach() {
         driver = new ChromeDriver();
 
+        //инициализацию переменных из проперти вынеси в бефорАлл, нам нет необходимости при каждом новом тесте лезть в проперти
+        //вытащили их разок перед всеми тестами и пользуемся
         Properties property = new Properties();
         {
             try {
                 fis = new FileInputStream("src/main/properties/config.properties");
                 property.load(fis);
 
-                pageURL = property.getProperty("pageURL");
-                CORRECT_LOGIN = property.getProperty("CORRECT_LOGIN");
-                CORRECT_PASSWORD = property.getProperty("CORRECT_PASSWORD");
-                INCORRECT_LOGIN = property.getProperty("INCORRECT_LOGIN");
-                INCORRECT_PASSWORD = property.getProperty("INCORRECT_PASSWORD");
-                pageURL_DYNAMIC = property.getProperty("pageURL_DYNAMIC");
-                pageURL_DYNAMIC_CONTROL= property.getProperty("pageURL_DYNAMIC_CONTROL");
-                driver.get(pageURL_DYNAMIC);
+                //нет необходимости обзывать заглавными, correctLogin, correctPassword
+                //в файле проперти аналогично
+                loginPageUrl = property.getProperty("loginPageUrl");
+                correctLogin = property.getProperty("correctLogin");
+                correctPassword = property.getProperty("correctPassword");
+                incorrectLogin = property.getProperty("incorrectLogin");
+                incorrectPassword = property.getProperty("incorrectPassword");
+                dynamicContentUrl = property.getProperty("dynamicContentUrl");
+                dynamicControlUrl = property.getProperty("dynamicControlUrl");
             } catch (IOException ex) {
                 ex.printStackTrace();
                 System.err.println("ОШИБКА: Файл свойств отсуствует!");
             }
         }
-
-
     }
 
     @AfterEach

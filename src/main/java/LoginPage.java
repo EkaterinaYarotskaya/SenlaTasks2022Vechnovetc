@@ -9,12 +9,13 @@ import java.time.Duration;
 public class LoginPage implements PageObject {
     private WebDriver driver;
     @FindBy(id = "username")
-    protected WebElement USERNAME_FIELD;
+    protected WebElement usernameField;
 
     @FindBy(id = "password")
-    protected WebElement PASSWORD_FIELD;
+    protected WebElement passwordField;
 
-    private final By BUTTON_FIELD = By.tagName("button");
+    //Тогда уже и тут прописывай вебэлемент с аннотацией FindBy
+    private final By buttonField = By.tagName("button");
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -24,9 +25,9 @@ public class LoginPage implements PageObject {
     public PageObject loginUserAccount(String userName, String userPassword) {
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-        USERNAME_FIELD.sendKeys(userName);
-        PASSWORD_FIELD.sendKeys(userPassword);
-        driver.findElement(BUTTON_FIELD).click();
+        usernameField.sendKeys(userName);
+        passwordField.sendKeys(userPassword);
+        driver.findElement(buttonField).click();
         if (driver.getCurrentUrl().equals("http://the-internet.herokuapp.com/login")) {
             return this;
         } else {
@@ -35,7 +36,7 @@ public class LoginPage implements PageObject {
     }
 
     public boolean isLoginButtonPresent() {
-        int size = driver.findElements(BUTTON_FIELD).size();
+        int size = driver.findElements(buttonField).size();
         return size > 0;
     }
 

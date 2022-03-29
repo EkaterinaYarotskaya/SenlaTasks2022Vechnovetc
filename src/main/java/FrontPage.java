@@ -3,7 +3,7 @@ import org.openqa.selenium.WebDriver;
 
 public class FrontPage implements PageObject {
 
-    private final By BUTTON_LOGOUT = By.cssSelector("a.button.secondary");
+    private final By logoutButton = By.cssSelector("a.button.secondary");
     private WebDriver driver;
 
     public FrontPage(WebDriver driver) {
@@ -12,13 +12,13 @@ public class FrontPage implements PageObject {
 
     public PageObject logoutUserAccount() {
 
-        driver.findElement(BUTTON_LOGOUT).click();
+        driver.findElement(logoutButton).click();
         if (driver.getCurrentUrl().equals("http://the-internet.herokuapp.com/secure"))
             return this;
         else return new LoginPage(driver);
     }
     public boolean isLogoutButtonPresent() {
-        int size = driver.findElements(BUTTON_LOGOUT).size();
+        int size = driver.findElements(logoutButton).size();
         return size > 0;
     }
 }
