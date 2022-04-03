@@ -5,18 +5,26 @@ import org.junit.jupiter.api.Test;
 public class LoginTest extends FixedData {
     private LoginPage loginPage;
     private FrontPage frontPage;
-
+    public final String correctLogin = property.getProperty("correctLogin");
+    private final String correctPassword =property.getProperty("correctPassword");
+    private final String  incorrectLogin =property.getProperty("incorrectLogin");
+    private final String incorrectPassword =property.getProperty("incorrectPassword");
 
     @BeforeEach
-    public void beforeTest() {
-        driver.get(loginPageUrl);
+    public void beforeEach() {
+        driver.get(property.getProperty("loginPageUrl"));
+        loginPage = new LoginPage(driver);
+//        String correctLogin = property.getProperty("correctLogin");
+//        correctPassword =property.getProperty("correctPassword");
+//          incorrectLogin =property.getProperty("incorrectLogin");
+//        private final String incorrectPassword
+
     }
 
-    //у тебя тут все проверки одинаковые, или кнопка есть, или ее нет)) можно же проверить, что при некорректном логине
-    // сверху появилось уведомление еще например, урл не поменялся)
+
     @Test
     public void successfulLoginWithCorrectCredentials() {
-        loginPage = new LoginPage(driver);
+
         frontPage = (FrontPage) loginPage.loginUserAccount(correctLogin, correctPassword);
         Assertions.assertFalse(loginPage.isLoginButtonPresent());
     }
@@ -40,14 +48,5 @@ public class LoginTest extends FixedData {
         loginPage = new LoginPage(driver);
         loginPage.loginUserAccount(incorrectLogin, incorrectPassword);
         Assertions.assertTrue(loginPage.isLoginButtonPresent());
-    }
-
-    //Этот тест можно положить в LoginTest (я и положил)
-    @Test
-    public void logoutTest() {
-        loginPage = new LoginPage(driver);
-        frontPage = (FrontPage) loginPage.loginUserAccount(correctLogin, correctPassword);
-        loginPage = (LoginPage) frontPage.logoutUserAccount();
-        Assertions.assertFalse(frontPage.isLogoutButtonPresent());
     }
 }
