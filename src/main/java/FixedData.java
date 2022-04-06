@@ -11,18 +11,14 @@ import java.util.Properties;
 public class FixedData implements PageObject {
 
     protected WebDriver driver;
-    protected FileInputStream fis;
-    protected Properties property;
+    protected static FileInputStream fis;
+    protected static Properties property;
 
     @BeforeAll
-    public static void beforeAllTests() {
+    public static   void beforeAllTests() {
         System.setProperty("webdriver.chrome.driver",
                 "chromedriver_win32\\chromedriver.exe");
-    }
 
-    @BeforeEach
-    public void beforeEach() {
-        driver = new ChromeDriver();
         property = new Properties();
         try {
             fis = new FileInputStream("src/main/properties/config.properties");
@@ -33,6 +29,9 @@ public class FixedData implements PageObject {
             System.err.println("ОШИБКА: Файл свойств отсуствует!");
         }
     }
+    @BeforeEach
+    public  void beforeEachTests() {
+    driver = new ChromeDriver();}
 
     @AfterEach
     public void afterEach() {

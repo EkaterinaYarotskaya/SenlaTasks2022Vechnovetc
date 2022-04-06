@@ -1,24 +1,36 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FrontPage implements PageObject {
 
-    private final By logoutButton = By.cssSelector("a.button.secondary");
     private WebDriver driver;
 
+    @FindBy(css= "a.button.secondary")
+    WebElement logoutButton;
+//        =driver.findElement(By.cssSelector("a.button.secondary"));
+
     public FrontPage(WebDriver driver) {
+
         this.driver = driver;
+        PageFactory.initElements(driver,this);
     }
 
     public PageObject logoutUserAccount() {
 
-        driver.findElement(logoutButton).click();
-        if (driver.getCurrentUrl().equals("http://the-internet.herokuapp.com/secure"))
-            return this;
-        else return new LoginPage(driver);
+        logoutButton.click();
+        return new LoginPage(driver);
     }
+
     public boolean isLogoutButtonPresent() {
-        int size = driver.findElements(logoutButton).size();
+
+        List<WebElement> listButton = new ArrayList<>();
+        listButton.add(logoutButton);
+        int size = listButton.size();
         return size > 0;
     }
 }

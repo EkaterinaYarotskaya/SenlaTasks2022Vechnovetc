@@ -1,4 +1,3 @@
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,7 +16,6 @@ public class LoginPage implements PageObject {
     @FindBy(id = "password")
     protected WebElement passwordField;
 
-    //Тогда уже и тут прописывай вебэлемент с аннотацией FindBy
     @FindBy(tagName = "button")
     protected WebElement buttonField;
 
@@ -36,7 +34,7 @@ public class LoginPage implements PageObject {
         if (driver.getCurrentUrl().equals("http://the-internet.herokuapp.com/login")) {
             return this;
         } else {
-            return new FrontPage(driver);
+            return new FrontPage (driver);
         }
     }
 

@@ -1,37 +1,46 @@
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class DynamicControlsTest extends FixedData {
+    DynamicControls dynamicControls;
+    String dynamicControlUrl=property.getProperty("dynamicControlUrl");
+
+    @BeforeEach
+    public void beforeEachTest() {
+        driver.get(dynamicControlUrl);
+        dynamicControls = new DynamicControls(driver);
+    }
 
     @Test
     public void clickOnCheckBox() {
-        DynamicControls dynamicControls= new DynamicControls(driver);
-        Assertions.assertTrue(dynamicControls.isCheckBox());
+        Assertions.assertTrue(dynamicControls.isCheckBoxPresent());
     }
 
     @Test
     public void removeAndAddButton() {
-        DynamicControls dynamicControls= new DynamicControls(driver);
-        dynamicControls.clickOnRemoveOrAddButton();
-        Assertions.assertEquals("It's gone!",dynamicControls.getText());
-        dynamicControls.clickOnRemoveOrAddButton();
-        Assertions.assertEquals("It's back!", dynamicControls.getText());
+
+        dynamicControls.clickOnRemoveOrAddCheckBoxButton();
+        Assertions.assertEquals("It's gone!", dynamicControls.getTextAfterClickOnRemoveOrAddButton());
+        dynamicControls.clickOnRemoveOrAddCheckBoxButton();
+        Assertions.assertEquals("It's back!", dynamicControls.getTextAfterClickOnRemoveOrAddButton());
     }
+
     @Test
-    public  void addTextToField(){
-        DynamicControls dynamicControls= new DynamicControls(driver);
+    public void addTextToField() {
+
         dynamicControls.clickOnEnableOrDisableButton();
         Assertions.assertTrue(dynamicControls.addTextOnField());
         dynamicControls.clickOnEnableOrDisableButton();
-        Assertions.assertFalse(dynamicControls.addTextOnField());
-
+        Assertions.assertTrue(dynamicControls.addTextOnField());
     }
+
     @Test
-    public void presentsElementOnPageBeforeAndAfterClickOnButton(){
-       DynamicControls dynamicControls= new DynamicControls(driver);
-      Assertions.assertFalse(dynamicControls.presentElementOnWeb());
-       dynamicControls.clickOnEnableOrDisableButton();
-        Assertions.assertTrue(dynamicControls.presentElementOnWeb());
+    public void presentsElementOnPageBeforeAndAfterClickOnButton() {
+
+        Assertions.assertFalse(dynamicControls.presentElementAfterClickOnEnableOrDisableButton());
+        dynamicControls.clickOnEnableOrDisableButton();
+        Assertions.assertTrue(dynamicControls.presentElementAfterClickOnEnableOrDisableButton());
 
 
     }
