@@ -15,12 +15,12 @@ public class DynamicControls implements PageObject {
     private WebDriver driver;
 
     @FindBy(xpath = "//*[@id=\"checkbox\"]")
-    WebElement checkBox;
+    List<WebElement>  checkBox;
 
     @FindBy(css = "#checkbox-example > button")
     WebElement removeOrAddButton;
 
-    @FindBy(css = "input[type='checkbox']")
+    @FindBy(css = "#checkbox-example>p")
     WebElement successfulButtonClickMessage;
 
     @FindBy(css = "input[type=text]")
@@ -38,9 +38,8 @@ public class DynamicControls implements PageObject {
     }
 
     public boolean isCheckBoxPresent() {
-        List<WebElement> checkBoxes = new ArrayList<>();
-        checkBoxes.add(checkBox);
-        int size = checkBoxes.size();
+
+        int size = checkBox.size();
         return size > 0;
     }
 
@@ -49,16 +48,17 @@ public class DynamicControls implements PageObject {
     }
 
     public void clickOnRemoveOrAddCheckBoxButton() {
-
-        if (isCheckBoxPresent()) {
+        boolean isCheckBoxPresent = isCheckBoxPresent();
+        if (isCheckBoxPresent) {
             removeOrAddButton.click();
             new WebDriverWait(driver, Duration.ofSeconds(10))
-                    .until(ExpectedConditions.stalenessOf(checkBox));
+                    .until(ExpectedConditions.stalenessOf(
+                            driver.findElement(By.xpath("//*[@id=\"checkbox\"]"))));
         } else {
             removeOrAddButton.click();
             new WebDriverWait(driver, Duration.ofSeconds(10))
                     .until(ExpectedConditions.presenceOfElementLocated(
-                            By.xpath ("//*[@id=\"checkbox\"]")));
+                            By.xpath("//*[@id=\"checkbox\"]")));
         }
     }
 

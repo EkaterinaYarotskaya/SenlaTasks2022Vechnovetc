@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 public class DynamicControlsTest extends FixedData {
     DynamicControls dynamicControls;
-    String dynamicControlUrl=property.getProperty("dynamicControlUrl");
+    String dynamicControlUrl = property.getProperty("dynamicControlUrl");
 
     @BeforeEach
     public void beforeEachTest() {
