@@ -29,10 +29,11 @@ public class DynamicControlsTest extends FixedData {
     @Test
     public void addTextToField() {
 
+        Assertions.assertFalse(dynamicControls.addTextOnField());
+        Assertions.assertNotEquals("123",dynamicControls.textSuccessfullyEntered());
         dynamicControls.clickOnEnableOrDisableButton();
         Assertions.assertTrue(dynamicControls.addTextOnField());
-        dynamicControls.clickOnEnableOrDisableButton();
-        Assertions.assertTrue(dynamicControls.addTextOnField());
+        Assertions.assertEquals("123",dynamicControls.textSuccessfullyEntered());
     }
 
     @Test

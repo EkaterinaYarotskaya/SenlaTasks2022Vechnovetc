@@ -62,38 +62,19 @@ public class DynamicControls implements PageObject {
         }
     }
 
-//    public DynamicControls clickToRemoveOrAddCheckboxButton() {
-//        if(isCheckboxPresent()) {
-//            removeOrAddCheckboxButton.click();
-//            new WebDriverWait(driver, 10)
-//                    .until(ExpectedConditions.stalenessOf(driver.findElement(checkBox)));
-//        } else {
-//            removeOrAddCheckboxButton.click();
-//            new WebDriverWait(driver, 10)
-//                    .until(ExpectedConditions.presenceOfElementLocated(checkBox));
-//        }
-//        return this;
-//    }
-//
-
-
-//    public String getTextEnableOrDisable() {
-//        WebElement element = (new WebDriverWait(driver, Duration.ofSeconds(10))
-//                .until(ExpectedConditions.presenceOfElementLocated(GET_MESSAGE)));
-//        String text = element.getText();
-//        return text;
-
-
     public boolean addTextOnField() {
 
         if (textInputField.isEnabled()) {
             textInputField.sendKeys("123");
             return true;
         } else {
-            clickOnEnableOrDisableButton();
-            textInputField.sendKeys("123");
-            return true;
+            return false;
         }
+    }
+
+    public String textSuccessfullyEntered(){
+        String textInField = textInputField.getAttribute("value");
+        return textInField;
     }
 
     public void clickOnEnableOrDisableButton() {

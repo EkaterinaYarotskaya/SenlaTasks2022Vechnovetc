@@ -48,6 +48,7 @@
             <version>${allure-junit5.version}</version>
         </dependency>
 
+
     </dependencies>
 
     <build>
@@ -84,6 +85,7 @@
                         <artifactId>aspectjweaver</artifactId>
                         <version>${aspectj.version}</version>
                     </dependency>
+
                 </dependencies>
             </plugin>
 
