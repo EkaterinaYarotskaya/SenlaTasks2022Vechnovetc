@@ -12,7 +12,7 @@ public class FrontPage implements PageObject {
 
     @FindBy(css= "a.button.secondary")
     WebElement logoutButton;
-//        =driver.findElement(By.cssSelector("a.button.secondary"));
+
 
     public FrontPage(WebDriver driver) {
 

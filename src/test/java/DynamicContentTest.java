@@ -4,7 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-public class DynamicContentTest extends FixedData {
+public class
+DynamicContentTest extends FixedData {
 
     //тут можно написать еще один BeforeEach и там открывать нужный урл
     //Сначала будет отрабатывать BeforeEach родительского класса FixedData, затем уже метод в тесте
@@ -14,6 +15,7 @@ public class DynamicContentTest extends FixedData {
     @BeforeEach
     public void beforeTest() {
         driver.get(dynamicContentUrl);
+
     }
 
     @Test

@@ -25,9 +25,7 @@ public class DynamicContentPage implements PageObject {
     public List<String> saveContentData() {
         //ели каждый раз нам нужен чистый список при вызове метода, то лучше список создавать в самом методе.
         //иначе при повторном вызове метода мы будем использоавть список с данными, полученными при первом вызове.
-        List<String> listOfContent;
-
-        listOfContent = new ArrayList<>();
+        List<String> listOfContent = new ArrayList<>();
         List<WebElement> elementList = driver.findElements(By.cssSelector("#content>.row"));
 
         elementList.forEach(a -> {
@@ -35,10 +33,10 @@ public class DynamicContentPage implements PageObject {
             listOfContent.add(a.findElement(By.cssSelector("#content>.row >.large-10")).getText());//кривой локатор, посмотри в дебаге и в консоли, что тут ты получаешь ничего
         });
 
-        for (WebElement obj : elementList) {
-            String strLinkText = obj.getText();
-            System.out.println(strLinkText);
-        }
+//        for (WebElement obj : elementList) {
+//            String strLinkText = obj.getText();
+//            System.out.println(strLinkText);
+//        }
         return listOfContent;
     }
 

@@ -44,6 +44,7 @@ public class DynamicControls implements PageObject {
     }
 
     public String getTextAfterClickOnRemoveOrAddButton() {
+
         return successfulButtonClickMessage.getText();
     }
 
