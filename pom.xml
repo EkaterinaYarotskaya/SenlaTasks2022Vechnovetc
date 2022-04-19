@@ -16,7 +16,13 @@
         <junit-platform-surefire-provider.version>1.1.0</junit-platform-surefire-provider.version>
         <aspectj.version>1.8.10</aspectj.version>
         <allure-junit5.version>2.6.0</allure-junit5.version>
-
+        <plugin>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-maven</artifactId>
+            <version>2.10.0</version> </plugin>
+        <configuration>
+            <reportVersion>2.14.0</reportVersion>
+        </configuration>
     </properties>
     <dependencies>
         <dependency>
